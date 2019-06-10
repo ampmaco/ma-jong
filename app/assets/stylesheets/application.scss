@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main {
+	background-color: #FFFFD1;
+	padding-bottom: 15px;
+}
+
+footer {
+	padding: 20px;
+	background-color: #FFDE99;
+	text-align: center;
+	font-size: 12px;
+	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+
+}
