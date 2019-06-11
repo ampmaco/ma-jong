@@ -22,6 +22,24 @@
 	box-sizing: border-box;
 }
 
+.main-visual {
+	width: 80%;
+	height: 400px;
+	margin: 0 auto 2em;
+	background-image: url(ma-jong1.jpg);
+	background-size: cover;
+	border-radius: 50px;
+	position: relative;
+}
+
+.main-visual p {
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	font-family: Hiragino Maru Gothic Pro;
+	font-size: 20px;
+}
+
 .main-thema {
 	width: 100%;
 	background-color: #E1FF8C;

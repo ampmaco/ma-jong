@@ -1,6 +1,13 @@
 <div class="main-thema">
 
 	<!-- メインビジュアル -->
+	<div class="main-visual">
+		<p>
+			<%= image_tag("sou1-66-90-l-emb.png", alt: "1索", size: "20x25") %>
+			タイトル未定
+			<%= image_tag("sou9-66-90-l-emb.png", alt: "9索", size: "20x25") %>
+		</p>
+	</div>
 
 	<!-- 簡易説明とコンセプトへのリンク -->
 
@@ -49,8 +56,8 @@
 						</table>
 
 						<% if user_signed_in? %>
-						<!-- グループに加入しているかどうかで場合分け、加入すみなら「グループから退室する」を表示させ、削除メソッドへリンクさせる。 -->
-						<button class="btn bg-success right">グループに参加する！</button>
+							<!-- グループに加入しているかどうかで場合分け、加入すみなら「グループから退室する」を表示させ、削除メソッドへリンクさせる。 -->
+							<button class="btn bg-success right">グループに参加する！</button>
 						<% end %>
 
 					</div>
