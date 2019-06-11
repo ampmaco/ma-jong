@@ -20,11 +20,18 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: Hiragino Maru Gothic Pro;
+}
+
+.clearfix::after {
+	content: "";
+	display: none;
+	clear: both;
 }
 
 .main-thema {
 	width: 100%;
-	background-color: #FFFFD1;
+	background-color: #E1FF8C;
 	padding: 2em 0;
 }
 
