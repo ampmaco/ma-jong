@@ -8,6 +8,37 @@
 	padding: 2em 0;
 }
 
+.main-visual {
+	width: 80%;
+	height: 400px;
+	margin: 0 auto 2em;
+	background-image: url(ma-jong1.jpg);
+	background-size: cover;
+	border-radius: 50px;
+	position: relative;
+}
+
+.main-visual p {
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	font-size: 20px;
+}
+
+.introduction {
+	width: 80%;
+	padding: 2em 2em 5em;
+	background-color: #F5F5F5;
+	margin: 0 auto 2em;
+	border: 1px solid #000000;
+	border-radius: 25px;
+	position: relative;
+}
+
+.introduction h2 {
+	margin-bottom: 1em;
+}
+
 .post {
 	width: 100%;
 	padding: 2em;
