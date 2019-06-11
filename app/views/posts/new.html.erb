@@ -43,9 +43,13 @@
 					<% end %>
 				</div>
 
+				<!-- 一覧表示のeach文 -->
 				<% @posts.each do |post| %>
+				<!-- 自分の投稿物のみ表示させる条件文 -->
 				<% if post.user_id == current_user.id %>
+					<!-- 一覧表示の１つを区切るための箱 -->
 					<div class="post">
+						<!-- セル間の余白調整のセレクトタグ -->
 						<table class="table-space">
 							<tr>
 								<td>グループ管理者：</td>
@@ -70,6 +74,8 @@
 							<tr>
 								<td>最終更新日：</td>
 								<td>
+									<!-- アップデートカラムで最終更新日を表示
+									そのまま表示させると時間など無駄な情報が出るため.strftimeで情報を制御 -->
 									<%= post.updated_at.strftime("%Y/%m/%d") %>
 								</td>
 							</tr>
@@ -81,9 +87,19 @@
 								<td>メンバー平均年齢：</td>
 								<td></td>
 							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<%= link_to post_path(post.id), method: :delete, "data-confirm" => "投稿内容を本当に削除しますか？" do %>
+										<button class="btn bg-danger fr">削除</button>
+									<% end %>
+									<%= link_to edit_post_path(post.id) do %>
+										<button class="btn bg-info fr">編集</button>
+									<% end %>
+
+								</td>
+							</tr>
 						</table>
-						<%= link_to "編集", edit_post_path(post.id) %> 
-						<%= link_to "削除", post_path(post.id), method: :delete, "data-confirm" => "投稿内容を本当に削除しますか？" %>
 					</div>
 				<% end %>
 				<% end %>

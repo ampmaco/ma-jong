@@ -23,6 +23,12 @@
 	font-family: Hiragino Maru Gothic Pro;
 }
 
+.clearfix::after {
+	content: "";
+	display: none;
+	clear: both;
+}
+
 .main-thema {
 	width: 100%;
 	background-color: #E1FF8C;
