@@ -1,2 +1,77 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="main-thema">
+
+	<!-- メインビジュアル -->
+	<div class="main-visual">
+		<p>
+			<%= image_tag("sou1-66-90-l-emb.png", alt: "1索", size: "20x25") %>
+			タイトル未定
+			<%= image_tag("sou9-66-90-l-emb.png", alt: "9索", size: "20x25") %>
+		</p>
+	</div>
+
+	<!-- 簡易説明とコンセプトへのリンク -->
+	<section class="introduction">
+		<h2>ようこそ「タイトル未定」へ！</h2>
+		<p>このWebサイトは”セット麻雀で和気藹々と遊びたい”方向けの求人サイトです。</p>
+		<p>セット麻雀の面子がいなくて・・・</p>
+		<p>フリーは殺伐としてて・・・</p>
+		<p>もう大丈夫です！「タイトル未定」で麻雀友達の輪を広げて、楽しい麻雀ライフを送りましょう！</p>
+		<%= link_to concept_path do %>
+			<button class="btn bg-success right">使い方を見る</button>
+		<% end %>
+	</section>
+
+	<!--  募集一覧 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<% @posts.each do |post| %>
+					<div class="post">
+						<table class="table-space">
+							<tr>
+								<td>グループ管理者：</td>
+								<td><%= post.user.user_name %></td>
+							</tr>
+							<tr>
+								<td>グループ名：</td>
+								<td><%= post.group_name %></td>
+							</tr>
+							<tr>
+								<td>地域(都道府県)：</td>
+								<td><%= post.prefecture %></td>
+							</tr>
+							<tr>
+								<td>地域(市・最寄駅)：</td>
+								<td><%= post.region %></td>
+							</tr>
+							<tr>
+								<td>募集内容：</td>
+								<td><%= simple_format(post.description) %></td>
+							</tr>
+							<tr>
+								<td>最終更新日：</td>
+								<td>
+									<%= post.updated_at.strftime("%Y/%m/%d") %>
+								</td>
+							</tr>
+							<tr>
+								<td>メンバー数：</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>メンバー平均年齢：</td>
+								<td></td>
+							</tr>
+						</table>
+
+						<% if user_signed_in? %>
+							<!-- グループに加入しているかどうかで場合分け、加入すみなら「グループから退室する」を表示させ、削除メソッドへリンクさせる。 -->
+							<button class="btn bg-success right">グループに参加する！</button>
+						<% end %>
+
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

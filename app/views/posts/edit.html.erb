@@ -1,2 +1,52 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="mypage-thema">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="post">
+					<h2>マイページ（編集）</h2>
+
+					<!-- 新規募集投稿フォーム -->
+					<%= form_for(@post) do |f| %>
+
+					<!-- エラー発生時にエラー件数と文表示 -->
+					<% if @post.errors.any? %>
+						<%= @post.errors.count %>件のエラーが発生しました
+						<% @post.errors.full_messages.each do |message| %>
+							<%= message %>
+						<% end %>
+					<% end %>
+
+						<div class="">
+							<%= f.label :group_name, "グループ名" %><br>
+							<%= f.text_field :group_name, autofocus: true %>
+						</div>
+
+						<!-- post.rbでprefectureカラムをenumで定義したものをセレクトボックスで引用する -->
+						<div class="">
+							<%= f.label :prefecture, "都道府県選択" %><br>
+							<%= f.select :prefecture, Post.prefectures.keys, {prompt: '選択して下さい', require: true} %>
+						</div>
+
+						<div class="">
+							<%= f.label :region, "地域・最寄駅等" %><br>
+							<%= f.text_field :region %>
+						</div>
+
+						<div class="">
+							<%= f.label :desctiption, "募集内容" %><br>
+							<%= f.text_area :description %>
+						</div>
+
+						<div class="">
+							<%= f.label :status, "募集状態" %><br>
+							<%= f.select :status, Post.statuses.keys, {value: "1", require: true} %>
+						</div>
+
+						<%= f.submit "更新する" %>
+
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
