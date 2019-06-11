@@ -1,0 +1,92 @@
+<!-- マイページは青基調の色に設定 -->
+<div class="mypage-thema">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="post">
+					<h2>マイページ（投稿・一覧）</h2>
+
+					<!-- 新規募集投稿フォーム -->
+					<%= form_for(@post) do |f| %>
+
+					<!-- エラー発生時にエラー件数と文表示 -->
+					<% if @post.errors.any? %>
+						<%= @post.errors.count %>件のエラーが発生しました
+						<% @post.errors.full_messages.each do |message| %>
+							<%= message %>
+						<% end %>
+					<% end %>
+
+						<div class="">
+							<%= f.label :group_name, "グループ名" %><br>
+							<%= f.text_field :group_name, autofocus: true %>
+						</div>
+
+						<!-- post.rbでprefectureカラムをenumで定義したものをセレクトボックスで引用する -->
+						<div class="">
+							<%= f.label :prefecture, "都道府県選択" %><br>
+							<%= f.select :prefecture, Post.prefectures.keys, {prompt: '選択して下さい', require: true} %>
+						</div>
+
+						<div class="">
+							<%= f.label :region, "地域・最寄駅等" %><br>
+							<%= f.text_field :region %>
+						</div>
+
+						<div class="">
+							<%= f.label :desctiption, "募集内容" %><br>
+							<%= f.text_area :description %>
+						</div>
+
+						<%= f.submit "投稿する" %>
+
+					<% end %>
+				</div>
+
+				<% @posts.each do |post| %>
+				<% if post.user_id == current_user.id %>
+					<div class="post">
+						<table class="table-space">
+							<tr>
+								<td>グループ管理者：</td>
+								<td><%= post.user.user_name %></td>
+							</tr>
+							<tr>
+								<td>グループ名：</td>
+								<td><%= post.group_name %></td>
+							</tr>
+							<tr>
+								<td>地域(都道府県)：</td>
+								<td><%= post.prefecture %></td>
+							</tr>
+							<tr>
+								<td>地域(市・最寄駅)：</td>
+								<td><%= post.region %></td>
+							</tr>
+							<tr>
+								<td>募集内容：</td>
+								<td><%= simple_format(post.description) %></td>
+							</tr>
+							<tr>
+								<td>最終更新日：</td>
+								<td>
+									<%= post.updated_at.strftime("%Y/%m/%d") %>
+								</td>
+							</tr>
+							<tr>
+								<td>メンバー数：</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>メンバー平均年齢：</td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				<% end %>
+				<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
