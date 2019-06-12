@@ -56,17 +56,26 @@
 							</tr>
 							<tr>
 								<td>メンバー数：</td>
-								<td></td>
+								<!-- グループ追加しているユーザー数＋１（自分自身）を表示させる -->
+								<td><%= post.joins.count + 1 %>人</td>
 							</tr>
 							<tr>
 								<td>メンバー平均年齢：</td>
 								<td></td>
 							</tr>
 						</table>
-
-						<% if user_signed_in? %>
-							<!-- グループに加入しているかどうかで場合分け、加入すみなら「グループから退室する」を表示させ、削除メソッドへリンクさせる。 -->
-							<button class="btn bg-success right">グループに参加する！</button>
+						<!-- ユーザーがログイン状態かつ、自身の投稿でない場合にグループ追加を表示させる -->
+						<% if user_signed_in? && post.user_id != current_user.id %>
+							<!-- グループに加入しているかどうかで場合分け、加入済みなら「グループから退室する」を表示させ、削除メソッドへリンクさせる。 -->
+							<% if post.joined_by?(current_user) %>
+								<%= link_to post_joins_path(post_id: post.id), method: :delete do %>
+									<button class="btn bg-danger right">グループを退会する</button>
+								<% end %>
+							<% else %>
+								<%= link_to post_joins_path(post_id: post.id), method: :post do %>
+									<button class="btn bg-success right">グループに参加する</button>
+								<% end %>
+							<% end %>
 						<% end %>
 
 					</div>
