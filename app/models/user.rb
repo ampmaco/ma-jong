@@ -11,7 +11,11 @@ class User < ApplicationRecord
   	validates :email, presence: true, uniqueness: true, length: {maximum: 254}
   	validates :profile, length: {maximum: 500}
 
-# アソシエーション
-	has_many :posts
+# アソシエーション、ユーザーが削除されたら付随するデータも消える
+	has_many :posts, dependent: :destroy
+	has_many :joins, dependent: :destroy
+
+# refileカラム用
+	attachment :image
 
 end

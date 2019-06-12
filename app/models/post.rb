@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
 # アソシエーション
 	belongs_to :user
+	has_many :joins, dependent: :destroy
 
 # enun設定　募集状態のステータスと県の情報を設定
 	enum status: { 募集中: 1, 募集締切: 2}
@@ -20,5 +21,9 @@ class Post < ApplicationRecord
 		徳島県:36,香川県:37,愛媛県:38,高知県:39,福岡県:40,佐賀県:41,長崎県:42,
 		熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
 	}
+
+	def joined_by?(user)
+		joins.where(user_id: user.id).exists?
+	end
 
 end

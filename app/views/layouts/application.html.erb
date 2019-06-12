@@ -8,6 +8,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header>
+    <div id="menu">
+      <ul>
+        <li><%= link_to "トップ", root_path %></li>
+        <li><%= link_to "コンセプト", concept_path %></li>
+        <% if user_signed_in? %>
+          <li>マイページ</li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li>管理者画面</li>
+        <% else %>
+          <li><%= link_to "ログイン", user_session_path %></li>
+          <li><%= link_to "会員登録", new_user_registration_path %></li>
+          <li>退会</li>
+        <% end %>
+      </ul>
+    </div>
+  </header>
 
   <body>
     <%= yield %>
