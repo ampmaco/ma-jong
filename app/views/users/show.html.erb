@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!-- マイページは青基調の色に設定 -->
+<div class="mypage-thema">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="post">
+					<p><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
+					<table class="table-space">
+						<tr>
+							<td>ニックネーム：</td>
+							<td><%= @user.user_name %></td>
+						</tr>
+						<tr>
+							<td>メールアドレス：</td>
+							<td><%= @user.email %></td>
+						</tr>
+						<tr>
+							<td>紹介文：</td>
+							<td><%= @user.profile %></td>
+						</tr>
+					</table>
+					<%= link_to edit_user_path(@user.id) do %>
+						<button class="btn bg-warning right">編集</button>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

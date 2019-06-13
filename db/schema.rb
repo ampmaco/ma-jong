@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_055358) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "group_name"
-    t.integer "prefecture"
+    t.string "prefecture"
     t.string "region"
     t.text "description"
     t.integer "status", default: 1
