@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all.order('updated_at DESC')
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).order('updated_at DESC')
+  end
+
+  def search
+    @q = Post.search(search_params)
+    @posts = @q.result(distinct: true).order('updated_at DESC')
   end
 
   def new
@@ -36,6 +42,10 @@ class PostsController < ApplicationController
 
   def post_params
   	params.require(:post).permit(:user_id, :group_name, :prefecture, :region, :description, :status)
+  end
+
+  def search_params
+    params.require(:q).permit(:prefecture_eq, :region_cont)
   end
 
 end
