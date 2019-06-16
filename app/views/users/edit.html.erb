@@ -7,7 +7,7 @@
 					<ul>
 						<li><%= link_to "マイページ", user_path(current_user.id) %></li>
 						<li><%= link_to "新規投稿", new_post_path %></li>
-						<li></li>
+						<li><%= link_to "グループ一覧", user_posts_path(user_id: current_user.id) %></li>
 					</ul>
 				</div>
 			</div>

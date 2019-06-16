@@ -2,14 +2,16 @@ class MessagesController < ApplicationController
 
   def index
   	@message = Message.new
-  	@messages = Message.all
+  	@post = Post.find(params[:post_id])
+  	@messages = Message.where(post_id: @post.id).order('id DESC')
   end
 
   def create
-  	post = Post.find(params[:id])
-  	message = current_user.messages.new(post_id: post.id)
-  	message.save
-  	redirect_to post_message_path(post.id)
+  	@post = Post.find(params[:post_id])
+  	@message = current_user.messages.new(message_params)
+  	@message.post_id = @post.id
+  	@message.save
+  	redirect_to post_message_path
   end
 
   def edit
@@ -19,14 +21,13 @@ class MessagesController < ApplicationController
   def update
   	@message = Message.find(params[:id])
   	@message.update(message_params)
-  	redirect_to post_message_path(@message.post.id)
+  	redirect_to post_message_path(@message.post_id)
   end
 
   def destroy
-  	post = Post.find(params[:id])
-  	message = current_user.messages.find_by(post_id: post.id)
-  	message.destroy
-  	redirect_to post_message_path(post.id)
+  	@message = Message.find(params[:id])
+  	@message.destroy
+  	redirect_to post_message_path(@message.post_id)
   end
 
   private

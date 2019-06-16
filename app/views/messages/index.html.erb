@@ -1,2 +1,55 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<!-- マイページは青基調の色に設定 -->
+<div class="mypage-thema">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="menu-bar">
+					<ul>
+						<li><%= link_to "マイページ", user_path(current_user.id) %></li>
+						<li><%= link_to "新規投稿", new_post_path %></li>
+						<li><%= link_to "グループ一覧", user_posts_path %></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-9">
+				<section class="post">
+					<h2>グループチャット</h2>
+					<%= form_for(@message, url: post_messages_path(@post.id), method: :post) do |f| %>
+						<table class="table-space">
+							<tr>
+								<td>メッセージ：</td>
+								<td>
+									<%= f.text_area :body %>
+									<%= f.submit "投稿" %>
+								</td>
+							</tr>
+						</table>
+					<% end %>
+				</section>
+				<% @messages.each do |message| %>
+					<div class="post">
+						<table class="table-space">
+							<tr>
+								<td>
+									<p><%= attachment_image_tag(message.user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
+									<p><%= message.user.user_name %></p>
+								</td>
+								<td>
+									<%= simple_format(message.body) %>
+								</td>
+							</tr>
+						</table>
+						<% if message.user == current_user %>
+							<%= link_to edit_message_path(message.id) do %>
+								<button class="btn bg-info">編集</button>
+							<% end %>
+							<%= link_to message_path(message.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+								<button class="btn bg-danger">削除</button>
+							<% end %>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
