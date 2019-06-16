@@ -1,8 +1,8 @@
 class UserPostsController < ApplicationController
 
 	def index
-		@posts = Post.all
-		@user_posts = UserPost.all
+		@user = current_user.posts.all
+		@user_posts = current_user.user_posts
 	end
 
 	def create
