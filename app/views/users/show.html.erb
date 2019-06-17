@@ -7,13 +7,13 @@
 					<ul>
 						<li><%= link_to "マイページ", user_path(current_user.id) %></li>
 						<li><%= link_to "新規投稿", new_post_path %></li>
-						<li><%= link_to "グループ一覧", user_posts_path(user_id: current_user.id) %></li>
+						<li><%= link_to "グループ一覧", user_posts_path %></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-9">
-				<div class="profile">
-					<p><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
+				<div class="post">
+					<p class="text-center"><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
 					<table class="table-space">
 						<tr>
 							<td>ニックネーム：</td>

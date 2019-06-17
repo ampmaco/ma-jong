@@ -17,7 +17,7 @@
 					<%= form_for(@message, url: post_messages_path(@post.id), method: :post) do |f| %>
 						<table class="table-space">
 							<tr>
-								<td>メッセージ：</td>
+								<td><%= f.label :body, "メッセージ：" %></td>
 								<td>
 									<%= f.text_area :body %>
 									<%= f.submit "投稿" %>
@@ -31,22 +31,27 @@
 						<table class="table-space">
 							<tr>
 								<td>
-									<p><%= attachment_image_tag(message.user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
-									<p><%= message.user.user_name %></p>
+									<p class="text-center"><%= attachment_image_tag(message.user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
+									<p class="text-center"><%= message.user.user_name %></p>
 								</td>
 								<td>
 									<%= simple_format(message.body) %>
 								</td>
 							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<% if message.user == current_user %>
+										<%= link_to message_path(message.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+											<button class="btn bg-danger fr">削除</button>
+										<% end %>
+										<%= link_to edit_message_path(message.id) do %>
+											<button class="btn bg-info fr">編集</button>
+										<% end %>
+									<% end %>
+								</td>
+							</tr>
 						</table>
-						<% if message.user == current_user %>
-							<%= link_to edit_message_path(message.id) do %>
-								<button class="btn bg-info">編集</button>
-							<% end %>
-							<%= link_to message_path(message.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-								<button class="btn bg-danger">削除</button>
-							<% end %>
-						<% end %>
 					</div>
 				<% end %>
 			</div>
