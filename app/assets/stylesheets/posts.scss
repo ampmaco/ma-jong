@@ -67,18 +67,21 @@
 	margin-bottom: 0;
 }
 
-.post p {
+.text-center {
 	text-align: center;
 }
 
 .table-space {
 	width: 100%;
-	border-collapse: separate;
-	border-spacing: 10px;
+	border-collapse: separate;	// テーブルセル間のborderを離す
+	border-spacing: 10px;	// テーブルセル間のborderの余白
+	table-layout: fixed;	// 英数字が改行されずにテーブルを突き抜ける対策
 }
 
 td {
 	width: 80%;
+	word-wrap: break-word;	// 英数字が改行されずにテーブルを突き抜ける対策
+	overflow-wrap: break-word;	// 英数字が改行されずにテーブルを突き抜ける対策
 }
 
 td:nth-child(odd) {

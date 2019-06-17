@@ -2,7 +2,16 @@
 <div class="mypage-thema">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-lg-3">
+				<div class="menu-bar">
+					<ul>
+						<li><%= link_to "マイページ", user_path(current_user.id) %></li>
+						<li><%= link_to "新規投稿", new_post_path %></li>
+						<li><%= link_to "グループ一覧", user_posts_path %></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-9">
 				<div class="post">
 					<h2>マイページ（投稿・一覧）</h2>
 

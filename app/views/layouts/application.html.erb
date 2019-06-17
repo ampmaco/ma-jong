@@ -14,7 +14,7 @@
         <li><%= link_to "トップ", root_path %></li>
         <li><%= link_to "コンセプト", concept_path %></li>
         <% if user_signed_in? %>
-          <li>マイページ</li>
+          <li><%= link_to "マイページ", user_path(current_user) %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           <li>管理者画面</li>
         <% else %>

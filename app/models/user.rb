@@ -13,7 +13,8 @@ class User < ApplicationRecord
 
 # アソシエーション、ユーザーが削除されたら付随するデータも消える
 	has_many :posts, dependent: :destroy
-	has_many :joins, dependent: :destroy
+	has_many :user_posts, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
 # refileカラム用
 	attachment :image

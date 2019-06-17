@@ -14,31 +14,15 @@
 			<div class="col-lg-9">
 				<section class="post">
 					<h2>編集</h2>
-					<%= form_for(@user) do |f| %>
+					<%= form_for(@message) do |f| %>
 						<table class="table-space">
 							<tr>
-								<td>名前：</td>
-								<td><%= f.text_field :user_name %></td>
-							</tr>
-							<tr>
-								<td>メールアドレス：</td>
-								<td><%= f.text_field :email %></td>
-							</tr>
-							<tr>
-								<td>現在の画像：</td>
-								<td><%= attachment_image_tag(@user, :image, :fill, 100, 100, format: "jpeg", fallback: "no_image.jpg") %></td>
-							</tr>
-							<tr>
-								<td>画像設定：</td>
-								<td><%= f.attachment_field :image %></td>
-							</tr>
-							<tr>
-								<td>紹介文：</td>
-								<td><%= f.text_area :profile %></td>
+								<td>メッセージ：</td>
+								<td><%= f.text_area :body %></td>
 							</tr>
 							<tr>
 								<td></td>
-								<td><%= f.submit "更新" %></td>
+								<td><%= f.submit "修正" %></td>
 							</tr>
 						</table>
 					<% end %>

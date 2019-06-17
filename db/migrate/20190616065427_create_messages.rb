@@ -1,8 +1,9 @@
-class CreateJoins < ActiveRecord::Migration[5.2]
+class CreateMessages < ActiveRecord::Migration[5.2]
   def change
-    create_table :joins do |t|
+    create_table :messages do |t|
       t.integer :user_id, foreign_key: true
       t.integer :post_id, foreign_key: true
+      t.text :body
 
       t.timestamps
     end
