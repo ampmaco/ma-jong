@@ -27,14 +27,146 @@
 							<td>紹介文：</td>
 							<td><%= @user.profile %></td>
 						</tr>
-					</table>
-					<% if @user == current_user %>
-						<%= link_to edit_user_path(@user.id) do %>
-							<button class="btn bg-warning right">編集</button>
+
+						<% if @user == current_user %>
+						<tr>
+							<td></td>
+							<td>
+								<%= link_to edit_user_path(@user.id) do %>
+									<button class="btn bg-warning fr">編集</button>
+								<% end %>
+							</td>
+						</tr>
 						<% end %>
+					</table>
+
+					<% if @user != current_user %>
+					<hr>
+					<button id="commenting" class="btn bg-info"><%= @user.user_name %>さんにコメントする</button>
+
+					<div id="commenting-form" class="dn">
+						<%= form_for(@comment, url: user_comments_path(@user.id), method: :post) do |f| %>
+						<table class="table-space">
+							<tr>
+								<td>評価：</td>
+								<td>
+									<div id="star-rating"></div>
+									<%= f.hidden_field :rate, id: :rate, value: 3 %>
+								</td>
+							</tr>
+							<tr>
+								<td><%= f.label :comment_body, "コメント" %></td>
+								<td>
+									<%= f.text_area :comment_body %>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><%= f.submit "投稿" %></td>
+							</tr>
+						</table>
+						<% end %>
+					</div>
 					<% end %>
+
+					<hr>
+
+					<button id="commented" class="btn bg-success">コメント一覧を表示する</button>
+
+					<div id="commented-form" class="dn">
+						<% @comments.each do |comment| %>
+						<hr>
+						<table class="table-space">
+							<tr>
+								<td>投稿者：</td>
+								<td><%= comment.commenting.user_name %></td>
+							</tr>
+							<tr>
+								<td>評価：</td>
+								<td>
+									<% if comment.rate == 1 %>
+										<p class="star-1"></p>
+									<% elsif comment.rate == 2 %>
+										<p class="star-2"></p>
+									<% elsif comment.rate == 3 %>
+										<p class="star-3"></p>
+									<% elsif comment.rate == 4 %>
+										<p class="star-4"></p>
+									<% else %>
+										<p class="star-5"></p>
+									<% end %>
+								</td>
+								<tr>
+									<td>コメント：</td>
+									<td><%= comment.comment_body %><td>
+							</tr>
+						</table>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+
+	$('#star-rating').raty({
+		path: '/assets/',
+		score: 3,
+		click: function(score, e) {
+			$("#rate").val(score)
+		}
+	});
+
+	$('.star-1').raty({
+		path: '/assets/',
+		readOnly: true,
+		score: 1
+	});
+
+	$('.star-2').raty({
+		path: '/assets/',
+		readOnly: true,
+		score: 2
+	});
+
+	$('.star-3').raty({
+		path: '/assets/',
+		readOnly: true,
+		score: 3
+	});
+
+	$('.star-4').raty({
+		path: '/assets/',
+		readOnly: true,
+		score: 4
+	});
+
+	$('.star-5').raty({
+		path: '/assets/',
+		readOnly: true,
+		score: 5
+	});
+
+	$(function(){
+		$('#commenting').on('click', (function(){
+			if ($('#commenting-form').hasClass('dn')) {
+				$('#commenting-form').removeClass('dn').addClass('db');
+			} else {
+				$('#commenting-form').removeClass('db').addClass('dn');
+			}
+		}));
+
+		$('#commented').on('click', (function(){
+			if ($('#commented-form').hasClass('dn')) {
+				$('#commented-form').removeClass('dn').addClass('db');
+			} else {
+				$('#commented-form').removeClass('db').addClass('dn');
+			}
+		}));
+	});
+
+
+
+</script>
