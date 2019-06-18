@@ -11,17 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.raty
 //= require rails-ujs
 //= require activestorage
 //= require bootstrap-sprockets
 //= require_tree .
-
-$(function(){
-	$('.join-member').on('click', (function(){
-		if ($(this).next('section').hasClass('member-list')) {
-			$(this).next('section').removeClass('member-list').addClass('member-list-2');
-		} else {
-			$(this).next('section').removeClass('member-list-2').addClass('member-list');
-		}
-	}));
-});

@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @comment = Comment.new
+    @comments = @user.passive_comments.where(commented_id: @user.id)
   end
 
   def edit

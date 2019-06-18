@@ -18,7 +18,7 @@
 						<button class="btn bg-info fr">チャットページ</button>
 						<button class="btn bg-success fr join-member">メンバー一覧</button>
 
-						<section class="member-list">
+						<section class="dn">
 							<h4>メンバー一覧</h4>
 							<table class="table-space">
 								<% post.user_posts.each do |join| %>
@@ -42,7 +42,7 @@
 						<%= user_post.post.group_name %>
 						<button class="btn bg-info fr">チャットページ</button>
 						<button class="btn bg-success fr join-member">メンバー一覧</button>
-						<section class="member-list">
+						<section class="dn">
 							<h4>メンバー一覧</h4>
 							<table class="table-space">
 								<% user_post.post.user_posts.each do |join| %>
@@ -65,3 +65,15 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(function(){
+		$('.join-member').on('click', (function(){
+			if ($(this).next('section').hasClass('dn')) {
+				$(this).next('section').removeClass('dn').addClass('db');
+			} else {
+				$(this).next('section').removeClass('db').addClass('dn');
+			}
+		}));
+	});
+</script>
