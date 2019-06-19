@@ -6,9 +6,10 @@ class UserPostsController < ApplicationController
 	end
 
 	def create
-		post = Post.find(params[:post_id])
-		user_post = current_user.user_posts.new(post_id: post.id)
-		user_post.save
+		@post = Post.find(params[:post_id])
+		@user_post = current_user.user_posts.new(post_id: @post.id)
+		@user_post.save
+		SampleMailer.send_join_group(@user_post).deliver
 		redirect_to root_path
 	end
 
