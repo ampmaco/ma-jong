@@ -76,3 +76,5 @@ gem 'kaminari'
 gem 'jquery-rails'
 # デザインbootstap用
 gem 'bootstrap-sass', '~> 3.3.6'
+# 環境変数を設定して各々共有したくない内容を隠せるgem
+gem 'dotenv-rails'
