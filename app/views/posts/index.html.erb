@@ -21,22 +21,25 @@
 		<% end %>
 	</section>
 
-	<div class="search">
-		<h2>地域検索</h2>
-
-		<%= search_form_for @q do |f| %>
-
-	  		<%= f.collection_select :prefecture_eq, @posts, :prefecture, :prefecture, include_blank: "都道府県 選択" %>
-	  		<%= f.search_field :region_cont, placeholder: "駅・周辺地域を入力してください" %>
-			<%= f.submit "検索" %>
-
-		<% end %>
-	</div>
-
-	<!--  募集一覧 -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-lg-3">
+				<div class="menu-bar">
+					<h2>地域検索</h2>
+					<hr>
+					<%= search_form_for @q do |f| %>
+
+				  		<%= f.collection_select :prefecture_eq, @posts, :prefecture, :prefecture, include_blank: "都道府県 選択" %>
+				  		<%= f.search_field :region_cont, placeholder: "駅・周辺地域を入力してください" %>
+						<%= f.submit "検索" %>
+
+					<% end %>
+				</div>
+			</div>
+
+	<!--  募集一覧 -->
+			<div class="col-lg-9">
+				<div class="post-lists jscroll">
 				<% @posts.each do |post| %>
 					<div class="post">
 						<table class="table-space">
@@ -71,10 +74,6 @@
 								<!-- グループ追加しているユーザー数＋１（自分自身）を表示させる -->
 								<td><%= post.user_posts.count + 1 %>人</td>
 							</tr>
-							<tr>
-								<td>メンバー平均年齢：</td>
-								<td></td>
-							</tr>
 						</table>
 						<!-- ユーザーがログイン状態かつ、自身の投稿でない場合にグループ追加を表示させる -->
 						<% if user_signed_in? && post.user_id != current_user.id %>
@@ -92,7 +91,32 @@
 
 					</div>
 				<% end %>
+				<%= paginate @posts %>
+				</div>
 			</div>
 		</div>
 	</div>
+	<%= link_to "#" do %>
+		<span id ="back">
+			<%= image_tag "ji5-66-90-s.png", alt: "画像", title: "上に戻る" %>
+		</span>
+	<% end %>
 </div>
+
+<script>
+
+$(function() {
+  $('.jscroll').jscroll({
+  	contentSelector: '.post-lists',
+    nextSelector: 'span.next a'
+  });
+
+  $('#back').on('click', function(){
+  	$('body, html').animate({
+  		scrollTop:0
+  	}, 800);
+  	return false
+  });
+});
+
+</script>

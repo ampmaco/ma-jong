@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.raty
+//= require jquery.jscroll.min.js
 //= require rails-ujs
 //= require activestorage
 //= require bootstrap-sprockets

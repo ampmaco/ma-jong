@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).order('updated_at DESC')
+    @posts = @q.result(distinct: true).order('updated_at DESC').page(params[:page]).per(5)
   end
 
   def search
