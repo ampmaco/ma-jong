@@ -1,0 +1,3 @@
+SampleMailer#send_when_update
+
+Hi, find me in app/views/sample_mailer/send_when_update

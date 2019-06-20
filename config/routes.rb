@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'tops/concept'
   devise_for :users
   root :to => "posts#index"
   get 'top/concept' => 'top#concept', as: 'concept'
