@@ -38,15 +38,15 @@ header {
 	z-index: 100;
 }
 
-#menu {
+header #menu {
 	
 }
 
-#menu ul li {
-	display: inline;
+header #menu ul li {
+	display: inline-block;
 }
 
-.main-thema {
+header .main-thema {
 	width: 100%;
 	background-color: #FBFBF0;
 	padding: 100px 0;
