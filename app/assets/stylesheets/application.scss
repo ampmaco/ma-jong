@@ -46,6 +46,40 @@ header {
 	display: inline;
 }
 
+input[type="text"],
+textarea {
+	width: 300px;
+	padding: 5px;
+	outline: none;
+	border: 1px solid #aaa;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+
+input[type="search"],
+textarea {
+	padding: 5px;
+	outline: none;
+	border: 1px solid #aaa;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+
+input[type="text"]:focus,input[type="search"],
+textarea:focus {
+	box-shadow: 0 0 7px #F8C758;
+	border: 1px solid #F8C758;
+}
+
+select{
+	padding: 5px;
+    background: none transparent;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+}
+
+
 .main-thema {
 	width: 100%;
 	background-color: #FBFBF0;
@@ -59,6 +93,10 @@ footer {
 	font-size: 12px;
 	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 
+}
+
+hr {
+	border-top: 1px solid #EB5D00;
 }
 
 .dn {
