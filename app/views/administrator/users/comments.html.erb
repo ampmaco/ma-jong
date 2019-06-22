@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="menu-bar">
+				<ul>
+					<li><%= link_to "ユーザー一覧", administrator_users_path %></li>
+					<li><%= link_to "投稿一覧", administrator_posts_path %></li>
+					<li><%= link_to "コメント一覧", administrator_comments_path %></li>
+					<li><%= link_to "お問い合わせ一覧", user_posts_path %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-9">
+			<div class="post">
+				<% @comments.each do |comment| %>
+					<p>ユーザー：<%= comment.commenting.user_name %> → <%= comment.commented.user_name %></p>
+					コメント：<%= comment.comment_body %>
+					<%= link_to comment_path(comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+						<button class="btn bg-danger fr">削除</button>
+					<% end %>
+					<%= link_to edit_comment_path(comment.id) do %>
+						<button class="btn bg-info fr">編集</button>
+					<% end %>
+					<hr>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
