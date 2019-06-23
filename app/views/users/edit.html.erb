@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
+		<div class="col-sm-3">
 			<div class="menu-bar">
 				<ul>
 					<li><%= link_to "マイページ", user_path(current_user.id) %></li>
@@ -9,7 +9,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-sm-9">
 			<section class="post">
 				<h2>編集</h2>
 				<%= form_for(@user) do |f| %>

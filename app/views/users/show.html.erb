@@ -1,24 +1,24 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
-			<div class="menu-bar">
+		<div class="col-sm-3">
+			<section class="menu-bar">
 				<ul>
 					<li><%= link_to "マイページ", user_path(current_user.id) %></li>
 					<li><%= link_to "新規投稿", new_post_path %></li>
 					<li><%= link_to "グループ一覧", user_posts_path %></li>
 				</ul>
-			</div>
+			</section>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-sm-9">
 			<div class="post">
 				<p class="text-center"><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
 				<table class="table-space">
 					<tr>
-						<td>ニックネーム：</td>
+						<td>名前：</td>
 						<td><%= @user.user_name %></td>
 					</tr>
 					<tr>
-						<td>メールアドレス：</td>
+						<td>メール：</td>
 						<td><%= @user.email %></td>
 					</tr>
 					<tr>
@@ -31,7 +31,7 @@
 						<td></td>
 						<td>
 							<%= link_to edit_user_path(@user.id) do %>
-								<button class="btn bg-warning fr">編集</button>
+								<button class="btn bg-info fr">編集</button>
 							<% end %>
 						</td>
 					</tr>
@@ -55,7 +55,7 @@
 						<tr>
 							<td><%= f.label :comment_body, "コメント" %></td>
 							<td>
-								<%= f.text_area :comment_body %>
+								<%= f.text_area :comment_body, require: true, size: "10x10", placeholder: "１０００文字以内" %>
 							</td>
 						</tr>
 						<tr>
@@ -73,32 +73,7 @@
 
 				<div id="commented-form" class="dn">
 					<% @comments.each do |comment| %>
-					<hr>
-					<table class="table-space">
-						<tr>
-							<td>投稿者：</td>
-							<td><%= comment.commenting.user_name %></td>
-						</tr>
-						<tr>
-							<td>評価：</td>
-							<td>
-								<% if comment.rate == 1 %>
-									<p class="star-1"></p>
-								<% elsif comment.rate == 2 %>
-									<p class="star-2"></p>
-								<% elsif comment.rate == 3 %>
-									<p class="star-3"></p>
-								<% elsif comment.rate == 4 %>
-									<p class="star-4"></p>
-								<% else %>
-									<p class="star-5"></p>
-								<% end %>
-							</td>
-							<tr>
-								<td>コメント：</td>
-								<td><%= comment.comment_body %><td>
-						</tr>
-					</table>
+						<%= render "comments/comments", comment: comment %>
 					<% end %>
 				</div>
 			</div>

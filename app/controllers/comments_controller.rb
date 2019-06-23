@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
   	@user = User.find(params[:user_id])
   	@comment = current_user.active_comments.new(comment_params)
@@ -8,20 +10,9 @@ class CommentsController < ApplicationController
   	redirect_to user_path(@user.id)
   end
 
-  def edit
-  	@comment = current_user.active_comments.find(params[:id])
-  end
-
-  def update
-  	@comment = current_user.active_comments.find(params[:id])
-  	@comment.update(comment_params)
-  	redirect_to user_path
-  end
-
   def destroy
-  	@comment = current_user.active_comments.find_by(commenting_id: params[:user_id])
+  	@comment = Comment.find(params[:id])
   	@comment.destroy
-  	redirect_to user_path
   end
 
   private

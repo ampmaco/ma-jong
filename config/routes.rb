@@ -14,13 +14,14 @@ Rails.application.routes.draw do
     get 'messages' => 'messages#index', as: 'message'
   end
   resources :user_posts, only: [:index]
-  resources :comments, only: [:edit, :update, :destroy]
+  resources :comments, only: [:destroy]
   resources :messages, only: [:edit, :update, :destroy]
-  resources :contacts, only: [:index, :create]
+  resources :contacts, only: [:index, :create, :destroy]
 
   namespace :administrator do
     resources :users, only: [:index]
     get 'posts' => 'users#posts', as: 'posts'
     get 'comments' => 'users#comments', as: 'comments'
+    get 'contacts' => 'users#contacts', as: 'contacts'
   end
 end

@@ -7,7 +7,14 @@ class ContactsController < ApplicationController
 	def create
 		@contact = Contact.new(contact_params)
 		@contact.save
+		ContactMailer.send_contact(@contact).deliver
 		redirect_to root_path
+	end
+
+	def destroy
+		@contact = Contact.find(params[:id])
+		@contact.destroy
+		redirect_to administrator_contacts_path
 	end
 
 	private

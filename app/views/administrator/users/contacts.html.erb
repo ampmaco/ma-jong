@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="menu-bar">
+				<ul>
+					<li><%= link_to "ユーザー一覧", administrator_users_path %></li>
+					<li><%= link_to "投稿一覧", administrator_posts_path %></li>
+					<li><%= link_to "コメント一覧", administrator_comments_path %></li>
+					<li><%= link_to "お問い合わせ一覧", administrator_contacts_path %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<% @contacts.each do |contact| %>
+				<div class="post">
+			        <table class="table-space">
+			          <tr>
+			            <td>名前：</td>
+			            <td><%= contact.contact_name %></td>
+			          </tr>
+			          <tr>
+			            <td>メール：</td>
+			            <td><%= contact.contact_email %></td>
+			          </tr>
+			          <tr>
+			            <td>ご用件：</td>
+			            <td>
+			              <%= contact.contact_body %>
+			            </td>
+			          </tr>
+			          <tr>
+			          	<td>日付：</td>
+			          	<td><%= contact.created_at.strftime("%Y/%m/%d") %></td>
+			          </tr>
+			          <tr>
+			          	<td></td>
+			          	<td><%= link_to "削除", contact_path(contact.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn bg-danger fr" %></td>
+			          </tr>
+			         </table>
+			     </div>
+			<% end %>
+		</div>
+	</div>
+</div>

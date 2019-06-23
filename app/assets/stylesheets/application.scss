@@ -21,7 +21,11 @@
 	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Hiragino Maru Gothic Pro;
+	font-family: Hiragino Maru Gothic Pro, sans-serif;
+}
+
+a {
+	text-decoration: none;
 }
 
 .clearfix::after {
@@ -32,24 +36,51 @@
 
 header {
 	width: 100%;
-	height: 80px;
+	height: 60px;
 	background-color: #F8C758;
 	position: fixed;
 	z-index: 100;
 }
 
-header #menu {
-	
+#title {
+	width: 15%;
+	float: left;
+	padding-top: 29px;
+	text-align: center;
 }
 
-header #menu ul li {
-	display: inline-block;
+#menu {
+	width: 100%;
 }
 
-header .main-thema {
+#menu ul {
+	margin: 0;
+	list-style-type: none;
 }
 
-input[type="text"],
+#menu li {
+	float: left;
+	width: 20%;
+	border-right: 1px solid #000000;
+	font-size: 14px;
+}
+
+#menu li:last-child {
+	border-right: none;
+}
+
+#menu li a {
+	display: block;
+	text-align: center;
+	padding: 20px 0 20px;
+	text-decoration: none;
+}
+
+#menu li a:hover {
+	background-color: #b0c4de;
+}
+
+input[type="text"],input[type="email"],input[type="password"],
 textarea {
 	width: 300px;
 	padding: 5px;
@@ -68,7 +99,7 @@ textarea {
 	transition: all .3s;
 }
 
-input[type="text"]:focus,input[type="search"],
+input[type="text"]:focus,input[type="search"]:focus,input[type="email"]:focus,input[type="password"]:focus,
 textarea:focus {
 	box-shadow: 0 0 7px #F8C758;
 	border: 1px solid #F8C758;
@@ -94,7 +125,7 @@ footer {
 	background-color: #EB5D00;
 	text-align: center;
 	font-size: 12px;
-	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+	font-family: Hiragino Maru Gothic Pro, sans-serif;
 
 }
 
@@ -110,6 +141,35 @@ hr {
 	display: block;
 }
 
+.fr {
+	float: right;
+}
+
 nav.pagination {
 	display: none;
+}
+
+#admin {
+	margin-left: 20px;
+}
+
+@media screen and (max-width:767px) {
+
+	header {
+		height: 50px;
+	}
+
+	#menu ul {
+		margin: 0;
+		list-style-type: none;
+	}
+
+	#menu li {
+		font-size: 13px;
+	}
+
+	#menu li a {
+		padding: 16px 0 15px;
+	}
+
 }

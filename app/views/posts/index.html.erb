@@ -1,3 +1,9 @@
+<% if user_signed_in? && current_user.admin == true %>
+	<div id="admin">
+	<%= link_to "管理者画面", administrator_users_path, class: "btn bg-info" %>
+	</div>
+<% end %>
+
 <div class="main-visual">
 	<p>
 		<%= image_tag("sou1-66-90-l-emb.png", alt: "1索", size: "20x25") %>
@@ -20,8 +26,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-lg-4">
-			<div class="menu-bar">
+		<div class="col-sm-4">
+			<div class="search">
 				<h2>地域検索</h2>
 				<hr>
 				<%= search_form_for @q do |f| %>
@@ -34,8 +40,9 @@
 			</div>
 		</div>
 
-<!--  募集一覧 -->
-		<div class="col-lg-8">
+		<!--  募集一覧 -->
+		<h2>募集一覧</h2>
+		<div class="col-sm-8">
 			<div class="post-lists jscroll">
 			<% @posts.each do |post| %>
 				<div class="post">
@@ -98,11 +105,6 @@
 		</div>
 	</div>
 </div>
-<%= link_to "#" do %>
-	<span id ="back">
-		<%= image_tag "ji5-66-90-s.png", alt: "画像", title: "上に戻る" %>
-	</span>
-<% end %>
 
 <script>
 
@@ -110,13 +112,6 @@ $(function() {
   $('.jscroll').jscroll({
   	contentSelector: '.post-lists',
     nextSelector: 'span.next a'
-  });
-
-  $('#back').on('click', function(){
-  	$('body, html').animate({
-  		scrollTop:0
-  	}, 800);
-  	return false
   });
 });
 
