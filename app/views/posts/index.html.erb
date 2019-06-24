@@ -1,9 +1,11 @@
+<!-- 管理者ボタン表示設定　ログイン状態かつUsersテーブルのadminカラムがtrueのとき表示 -->
 <% if user_signed_in? && current_user.admin == true %>
 	<div id="admin">
 	<%= link_to "管理者画面", administrator_users_path, class: "btn bg-info" %>
 	</div>
 <% end %>
 
+<!-- メインビジュアル -->
 <div class="main-visual">
 	<p>
 		<%= image_tag("sou1-66-90-l-emb.png", alt: "1索", size: "20x25") %>
@@ -27,6 +29,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-4">
+
+			<!-- 検索ボックス表示 -->
 			<div class="search">
 				<h2>地域検索</h2>
 				<hr>
@@ -106,6 +110,7 @@
 	</div>
 </div>
 
+<!-- 無限スクロール用 -->
 <script>
 
 $(function() {

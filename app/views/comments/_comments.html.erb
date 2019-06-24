@@ -1,3 +1,4 @@
+<!-- コメント一覧のパーシャル -->
 <table class="table-space" id="comment_<%= comment.id %>">
 	<hr>
 	<tr>
@@ -6,6 +7,7 @@
 	</tr>
 	<tr>
 		<td>評価：</td>
+		<!-- rateカラムの数値で表示する星の数を場合分け -->
 		<td>
 			<% if comment.rate == 1 %>
 				<p class="star-1"></p>
@@ -24,7 +26,7 @@
 			<td>コメント：</td>
 			<td><%= comment.comment_body %><td>
 	</tr>
-
+	<!-- Ajaxで削除 -->
 	<tr>
 		<td></td>
 		<td><%= link_to "削除", comment_path(comment.id), method: :delete, class: "btn bg-danger fr", "data-confirm" => "本当に削除しますか？", remote: true %></td>

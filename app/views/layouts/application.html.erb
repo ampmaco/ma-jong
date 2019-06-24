@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <!-- ヘッダー -->
   <header>
     <div id="menu">
       <ul>
@@ -55,9 +56,11 @@
   </header>
 
   <body>
+    <!-- 全ページ共通背景設定 -->
     <div class="main-thema">
     <%= yield %>
 
+      <!-- 上に戻るボタン -->
       <%= link_to "#" do %>
         <span id ="back">
           <%= image_tag "ji5-66-90-s.png", alt: "画像", title: "上に戻る" %>
@@ -66,6 +69,7 @@
 
     </div>
 
+<!-- 上に戻るボタンのjquery -->
 <script>
 
 $(function() {
@@ -79,6 +83,7 @@ $(function() {
 
 </script>
 
+  <!-- フッター -->
   <footer>
     Copyright © 2019 Akihiro Hayashi All Rights Reserved.
   </footer>

@@ -10,6 +10,8 @@
 			</section>
 		</div>
 		<div class="col-sm-9">
+
+			<!-- マイページ　ユーザー情報の表示 -->
 			<div class="post">
 				<p class="text-center"><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
 				<table class="table-space">
@@ -26,10 +28,14 @@
 						<td><%= @user.profile %></td>
 					</tr>
 
+					<!-- ユーザー本人だけが編集と削除をできる -->
 					<% if @user == current_user %>
 					<tr>
 						<td></td>
 						<td>
+							<%= link_to user_registration_path do %>
+								<button class="btn bg-danger fr">退会</button>
+							<% end %>
 							<%= link_to edit_user_path(@user.id) do %>
 								<button class="btn bg-info fr">編集</button>
 							<% end %>
@@ -38,6 +44,7 @@
 					<% end %>
 				</table>
 
+				<!-- ユーザー本人は自分にコメントできない -->
 				<% if @user != current_user %>
 				<hr>
 				<button id="commenting" class="btn bg-info"><%= @user.user_name %>さんにコメントする</button>

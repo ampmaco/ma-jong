@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-3">
+			<!-- サイドメニュー -->
 			<div class="menu-bar">
 				<ul>
 					<li><%= link_to "ユーザー一覧", administrator_users_path %></li>
@@ -11,6 +12,7 @@
 			</div>
 		</div>
 		<div class="col-sm-9">
+			<!-- 管理者投稿一覧 -->
 			<div class="post">
 				<% @posts.each do |post| %>
 					グループ名：<%= post.group_name %>
