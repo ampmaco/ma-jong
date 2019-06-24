@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <!-- お問い合わせフォーム -->
+      <section class="post">
+
+      <h2>お問い合わせ</h2>
+
+      <%= form_for(@contact) do |f| %>
+
+        <table class="table-space">
+          <tr>
+            <td><%= f.label :contact_name, "名前" %></td>
+            <td><%= f.text_field :contact_name, autofocus: true, require: true, placeholder: "２５文字以内" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :contact_email, "メールアドレス" %></td>
+            <td><%= f.text_field :contact_email, require: true, placeholder: "２５４文字以内" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :contact_body, "ご用件" %></td>
+            <td>
+              <%= f.text_area :contact_body, require: true, size: "10x10", placeholder: "１０００文字以内" %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "送信", class: "btn bg-success" %></td>
+          </tr>
+         </table>
+      <% end %>
+
+      </section>
+    </div>
+  </div>
+</div>

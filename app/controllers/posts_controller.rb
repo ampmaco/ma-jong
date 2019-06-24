@@ -5,6 +5,8 @@ class PostsController < ApplicationController
     @posts = @q.result(distinct: true).order('updated_at DESC').page(params[:page]).per(5)
   end
 
+  # ransack用
+
   def search
     @q = Post.search(search_params)
     @posts = @q.result(distinct: true).order('updated_at DESC')
@@ -24,6 +26,9 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user != current_user
+      redirect_to books_path
+    end
   end
 
   def update
@@ -35,7 +40,6 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to new_post_path
   end
 
   private

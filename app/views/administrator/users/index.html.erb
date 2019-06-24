@@ -1,32 +1,27 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
+		<div class="col-sm-3">
+			<!-- サイドメニュー -->
 			<div class="menu-bar">
 				<ul>
 					<li><%= link_to "ユーザー一覧", administrator_users_path %></li>
 					<li><%= link_to "投稿一覧", administrator_posts_path %></li>
 					<li><%= link_to "コメント一覧", administrator_comments_path %></li>
-					<li><%= link_to "お問い合わせ一覧", user_posts_path %></li>
+					<li><%= link_to "お問い合わせ一覧", administrator_contacts_path %></li>
 				</ul>
 			</div>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-sm-9">
+			<!-- 管理者ユーザー一覧 -->
 			<div class="post">
 				<% @users.each do |user| %>
 					ユーザー名：<%= user.user_name %>
-					<% if user.deleted_at == nil %>
-						(削除済み)
-						<%= link_to administrator_restore_path(user.id), method: :patch do %>
-							<button class="btn bg-info fr">ユーザーを復帰させる</button>
-						<% end %>
-					<% else %>
 						<%= link_to user_registration_path, method: :delete, "data-confirm" => "本当に削除しますか？" do %>
 							<button class="btn bg-danger fr">削除</button>
 						<% end %>
 						<%= link_to edit_user_path(user.id) do %>
 							<button class="btn bg-info fr">編集</button>
 						<% end %>
-					<% end %>
 					<hr>
 				<% end %>
 			</div>

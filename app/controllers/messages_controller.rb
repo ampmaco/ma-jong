@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
   	@message = Message.new
   	@post = Post.find(params[:post_id])
@@ -12,16 +14,6 @@ class MessagesController < ApplicationController
   	@message.post_id = @post.id
   	@message.save
   	redirect_to post_message_path
-  end
-
-  def edit
-  	@message = Message.find(params[:id])
-  end
-
-  def update
-  	@message = Message.find(params[:id])
-  	@message.update(message_params)
-  	redirect_to post_message_path(@message.post_id)
   end
 
   def destroy

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def show
   	@user = User.find(params[:id])
     @comment = Comment.new
@@ -8,6 +10,9 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
+    if @user != current_user
+      redirect_to books_path
+    end
   end
 
   def update

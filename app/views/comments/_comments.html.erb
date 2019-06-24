@@ -1,0 +1,34 @@
+<!-- コメント一覧のパーシャル -->
+<table class="table-space" id="comment_<%= comment.id %>">
+	<hr>
+	<tr>
+		<td>投稿者：</td>
+		<td><%= comment.commenting.user_name %></td>
+	</tr>
+	<tr>
+		<td>評価：</td>
+		<!-- rateカラムの数値で表示する星の数を場合分け -->
+		<td>
+			<% if comment.rate == 1 %>
+				<p class="star-1"></p>
+			<% elsif comment.rate == 2 %>
+				<p class="star-2"></p>
+			<% elsif comment.rate == 3 %>
+				<p class="star-3"></p>
+			<% elsif comment.rate == 4 %>
+				<p class="star-4"></p>
+			<% else %>
+				<p class="star-5"></p>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+			<td>コメント：</td>
+			<td><%= comment.comment_body %><td>
+	</tr>
+	<!-- Ajaxで削除 -->
+	<tr>
+		<td></td>
+		<td><%= link_to "削除", comment_path(comment.id), method: :delete, class: "btn bg-danger fr", "data-confirm" => "本当に削除しますか？", remote: true %></td>
+	</tr>
+</table>

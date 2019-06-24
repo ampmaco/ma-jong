@@ -21,7 +21,11 @@
 	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Hiragino Maru Gothic Pro;
+	font-family: Hiragino Maru Gothic Pro, sans-serif;
+}
+
+a {
+	text-decoration: none;
 }
 
 .clearfix::after {
@@ -30,23 +34,61 @@
 	clear: both;
 }
 
+// ヘッダー用 ====================================
+
 header {
 	width: 100%;
-	height: 80px;
+	height: 60px;
 	background-color: #F8C758;
 	position: fixed;
 	z-index: 100;
 }
 
 #menu {
-	
+	width: 100%;
 }
 
-#menu ul li {
-	display: inline;
+#menu ul {
+	margin: 0;
+	list-style-type: none;
 }
 
-input[type="text"],
+#menu li {
+	float: left;
+	width: 20%;
+	border-right: 1px solid #000000;
+	font-size: 14px;
+}
+
+#menu li:last-child {
+	border-right: none;
+}
+
+#menu li a {
+	display: block;
+	text-align: center;
+	padding: 20px 0 20px;
+	text-decoration: none;
+}
+
+#menu li a:hover {
+	background-color: #b0c4de;
+}
+
+// フッター用===================================
+
+footer {
+	padding: 20px;
+	background-color: #EB5D00;
+	text-align: center;
+	font-size: 12px;
+	font-family: Hiragino Maru Gothic Pro, sans-serif;
+
+}
+
+// フォーム用===================================
+
+input[type="text"],input[type="email"],input[type="password"],
 textarea {
 	width: 300px;
 	padding: 5px;
@@ -65,34 +107,18 @@ textarea {
 	transition: all .3s;
 }
 
-input[type="text"]:focus,input[type="search"],
+input[type="text"]:focus,input[type="search"]:focus,input[type="email"]:focus,input[type="password"]:focus,
 textarea:focus {
 	box-shadow: 0 0 7px #F8C758;
 	border: 1px solid #F8C758;
 }
 
-select{
-	padding: 5px;
-    background: none transparent;
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-}
-
+// 全ページ共通設定=================================
 
 .main-thema {
 	width: 100%;
 	background-color: #FBFBF0;
 	padding: 100px 0;
-}
-
-footer {
-	padding: 20px;
-	background-color: #EB5D00;
-	text-align: center;
-	font-size: 12px;
-	font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
-
 }
 
 hr {
@@ -107,6 +133,199 @@ hr {
 	display: block;
 }
 
+.fr {
+	float: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.right {
+	position: absolute;
+	right: 2em;
+	bottom: 2em;
+}
+
+// 無限スクロール用==============================
+
 nav.pagination {
 	display: none;
+}
+
+// 管理者ボタン用================================
+
+#admin {
+	margin-left: 20px;
+}
+
+// 管理者画面とマイページのサイドメニュー===========
+
+.menu-bar {
+	border-radius: 25px;
+	position: relative;
+}
+
+.menu-bar ul {
+	list-style-type: none;
+}
+
+.menu-bar li {
+	width: 100%;
+	border: 1px solid #FBFBF0;
+	border-radius: 25px;
+	font-size: 16px;
+	background-color: #b0c4de;
+}
+
+.menu-bar li:last-child {
+	border-bottom: none;
+}
+
+.menu-bar li a {
+	display: block;
+	border-radius: 25px;
+	text-align: center;
+	padding: 29px 0 29px;
+	text-decoration: none;
+}
+
+.menu-bar li a:hover {
+	background-color: #d1f6ff;
+}
+
+// トップページの画像用==========================
+
+.main-visual {
+	width: 80%;
+	height: 400px;
+	margin: 0 auto 2em;
+	background-image: url(ma-jong1.jpg);
+	background-size: cover;
+	border-radius: 50px;
+	position: relative;
+}
+
+.main-visual p {
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	font-size: 20px;
+}
+
+// トップページの説明欄用========================
+
+.introduction {
+	width: 80%;
+	padding: 2em 2em 5em;
+	margin: 0 auto 2em;
+	border: 1px solid #000000;
+	border-radius: 25px;
+	position: relative;
+}
+
+.introduction h2 {
+	margin-bottom: 1em;
+}
+
+// 検索フォーム用===============================
+
+.search {
+	width: 100%;
+	padding: 2em;
+	margin: 0 auto 2em;
+	border: 1px solid #000000;
+	border-radius: 25px;
+}
+
+.search h2 {
+	font-size: 25px;
+	margin-bottom: 1em;
+}
+
+// 複数ページで利用するフォーマット================
+
+.post {
+	width: 100%;
+	padding: 2em;
+	margin-bottom: 1em;
+	border: 1px solid #000000;
+	border-radius: 25px;
+	position: relative;
+}
+
+.post:last-child {
+	margin-bottom: 0;
+}
+
+.post hr:last-child {
+	display: none;
+}
+
+.table-space {
+	width: 100%;
+	border-collapse: separate;	// テーブルセル間のborderを離す
+	border-spacing: 10px;	// テーブルセル間のborderの余白
+	table-layout: fixed;	// 英数字が改行されずにテーブルを突き抜ける対策
+}
+
+td {
+	width: 80%;
+	word-wrap: break-word;	// 英数字が改行されずにテーブルを突き抜ける対策
+	overflow-wrap: break-word;	// 英数字が改行されずにテーブルを突き抜ける対策
+}
+
+td:nth-child(odd) {
+	width: 20%;
+	text-align: right;
+}
+
+// ページ上部に戻るボタン用=======================
+
+#back {
+	position: fixed;
+	bottom: 20px;
+	right: 40px;
+	transition: 1.5s;
+	opacity: 0.5;
+}
+
+#back:hover {
+	transform: rotateZ(360deg);
+}
+
+// メニューのレスポンシブデザイン用================
+
+@media screen and (max-width:767px) {
+
+	.menu-bar ul li {
+		display: inline-block;
+	}
+
+	.menu-bar li {
+		width: 24%;
+		font-size: 14px;
+	}
+
+	.menu-bar li a {
+		padding: 10px 0 8px;
+	}
+
+	header {
+		height: 50px;
+	}
+
+	#menu ul {
+		margin: 0;
+		list-style-type: none;
+	}
+
+	#menu li {
+		font-size: 13px;
+	}
+
+	#menu li a {
+		padding: 16px 0 15px;
+	}
+
 }

@@ -1,0 +1,50 @@
+<!-- 新規投稿画面の投稿一覧パーシャル -->
+<div class="post" id="post_<%= post.id %>">
+	<!-- セル間の余白調整のセレクトタグ -->
+	<table class="table-space">
+		<tr>
+			<td>グループ管理者：</td>
+			<td><%= post.user.user_name %></td>
+		</tr>
+		<tr>
+			<td>グループ名：</td>
+			<td><%= post.group_name %></td>
+		</tr>
+		<tr>
+			<td>地域(都道府県)：</td>
+			<td><%= post.prefecture %></td>
+		</tr>
+		<tr>
+			<td>地域(市・最寄駅)：</td>
+			<td><%= post.region %></td>
+		</tr>
+		<tr>
+			<td>募集内容：</td>
+			<td><%= simple_format(post.description) %></td>
+		</tr>
+		<tr>
+			<td>最終更新日：</td>
+			<td>
+				<!-- アップデートカラムで最終更新日を表示
+				そのまま表示させると時間など無駄な情報が出るため.strftimeで情報を制御 -->
+				<%= post.updated_at.strftime("%Y/%m/%d") %>
+			</td>
+		</tr>
+		<tr>
+			<td>メンバー数：</td>
+			<td><%= post.user_posts.count + 1 %>人</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<%= link_to post_path(post.id), method: :delete, "data-confirm" => "投稿内容を本当に削除しますか？", remote: true do %>
+					<button class="btn bg-danger fr">削除</button>
+				<% end %>
+				<%= link_to edit_post_path(post.id) do %>
+					<button class="btn bg-info fr">編集</button>
+				<% end %>
+
+			</td>
+		</tr>
+	</table>
+</div>

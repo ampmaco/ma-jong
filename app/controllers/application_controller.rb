@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
 		devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
 		devise_parameter_sanitizer.permit(:account_update, keys: [:user_name, :email, :image_id, :profile])
   	end
+
+  	# ユーザーが管理者であるかどうかのチェックメソッド
+
+    def admin_user
+        redirect_to(root_path) unless current_user.admin?
+    end
+
 end

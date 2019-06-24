@@ -1,5 +1,7 @@
 class UserPostsController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def index
 		@user = current_user.posts.all
 		@user_posts = current_user.user_posts

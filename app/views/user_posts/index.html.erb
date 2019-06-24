@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
+		<div class="col-sm-3">
 			<div class="menu-bar">
 				<ul>
 					<li><%= link_to "マイページ", user_path(current_user.id) %></li>
@@ -9,13 +9,17 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-sm-9">
+
+			<!-- グループ一覧とメンバー一覧　自分が投稿したグループの表示 -->
 			<% @user.each do |post| %>
 				<div class="post">
 					<%= post.group_name %>
 					<%= link_to post_message_path(post.id) do %>
 						<button class="btn bg-info fr">チャットページ</button>
 					<% end %>
+
+					<!-- メンバー一覧ボタンを押すと、メンバーリストが表示される -->
 					<button class="btn bg-success fr join-member">メンバー一覧</button>
 
 					<section class="dn">
@@ -37,6 +41,8 @@
 					</section>
 				</div>
 			<% end %>
+
+			<!-- グループ一覧とメンバー一覧　他人が投稿したグループの表示 -->
 			<% @user_posts.each do |user_post| %>
 				<div class="post">
 					<%= user_post.post.group_name %>

@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
+		<div class="col-sm-3">
+			<!-- サイドメニュー -->
 			<div class="menu-bar">
 				<ul>
 					<li><%= link_to "マイページ", user_path(current_user.id) %></li>
@@ -9,7 +10,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-sm-9">
+
+			<!-- グループチャット投稿 -->
 			<section class="post">
 				<h2>
 					<%= @post.group_name %>のグループチャット
@@ -29,6 +32,8 @@
 					</table>
 				<% end %>
 			</section>
+
+			<!-- グループチャット一覧 -->
 			<div class="post">
 				<% @messages.each do |message| %>
 								<%= message.created_at.strftime("%Y/%m/%d") %>  

@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-sm-3">
 		<div class="menu-bar">
 			<ul>
 				<li><%= link_to "マイページ", user_path(current_user.id) %></li>
@@ -9,7 +9,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="col-lg-9">
+	<div class="col-sm-9">
 		<div class="post">
 			<h2>新規投稿</h2>
 
@@ -29,7 +29,7 @@
 							<%= f.label :group_name, "グループ名" %>
 						</td>
 						<td>
-							<%= f.text_field :group_name, autofocus: true %>
+							<%= f.text_field :group_name, autofocus: true, placeholder: "２０文字以内" %>
 						</td>
 					</tr>
 					<tr>
@@ -46,7 +46,7 @@
 							<%= f.label :region, "地域・最寄駅等" %>
 						</td>
 						<td>
-							<%= f.text_field :region %>
+							<%= f.text_field :region, placeholder: "２０文字以内" %>
 						</td>
 					</tr>
 					<tr>
@@ -54,7 +54,7 @@
 							<%= f.label :desctiption, "募集内容" %><br>
 						</td>
 						<td>
-							<%= f.text_area :description, size: "10x10" %>
+							<%= f.text_area :description, size: "10x10", placeholder: "２０００文字以内" %>
 						</td>
 					</tr>
 					<tr>
@@ -72,55 +72,8 @@
 		<!-- 自分の投稿物のみ表示させる条件文 -->
 		<% if post.user_id == current_user.id %>
 			<!-- 一覧表示の１つを区切るための箱 -->
-			<div class="post">
-				<!-- セル間の余白調整のセレクトタグ -->
-				<table class="table-space">
-					<tr>
-						<td>グループ管理者：</td>
-						<td><%= post.user.user_name %></td>
-					</tr>
-					<tr>
-						<td>グループ名：</td>
-						<td><%= post.group_name %></td>
-					</tr>
-					<tr>
-						<td>地域(都道府県)：</td>
-						<td><%= post.prefecture %></td>
-					</tr>
-					<tr>
-						<td>地域(市・最寄駅)：</td>
-						<td><%= post.region %></td>
-					</tr>
-					<tr>
-						<td>募集内容：</td>
-						<td><%= simple_format(post.description) %></td>
-					</tr>
-					<tr>
-						<td>最終更新日：</td>
-						<td>
-							<!-- アップデートカラムで最終更新日を表示
-							そのまま表示させると時間など無駄な情報が出るため.strftimeで情報を制御 -->
-							<%= post.updated_at.strftime("%Y/%m/%d") %>
-						</td>
-					</tr>
-					<tr>
-						<td>メンバー数：</td>
-						<td><%= post.user_posts.count + 1 %>人</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<%= link_to post_path(post.id), method: :delete, "data-confirm" => "投稿内容を本当に削除しますか？" do %>
-								<button class="btn bg-danger fr">削除</button>
-							<% end %>
-							<%= link_to edit_post_path(post.id) do %>
-								<button class="btn bg-info fr">編集</button>
-							<% end %>
+			<%= render "posts/new", post: post %>
 
-						</td>
-					</tr>
-				</table>
-			</div>
 		<% end %>
 		<% end %>
 	</div>

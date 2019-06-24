@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
+		<div class="col-sm-3">
 			<div class="menu-bar">
 				<ul>
 					<li><%= link_to "マイページ", user_path(current_user.id) %></li>
@@ -9,7 +9,9 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-lg-9">
+		<div class="col-sm-9">
+
+			<!-- ユーザー情報の修正 -->
 			<section class="post">
 				<h2>編集</h2>
 				<%= form_for(@user) do |f| %>
@@ -36,7 +38,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><%= f.submit "更新" %></td>
+							<td><%= f.submit "更新", class: "btn bg-success" %></td>
 						</tr>
 					</table>
 				<% end %>
