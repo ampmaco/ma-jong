@@ -13,7 +13,7 @@
 
 			<!-- マイページ　ユーザー情報の表示 -->
 			<div class="post">
-				<p class="text-center"><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg") %></p>
+				<p class="text-center"><%= attachment_image_tag(@user, :image, :fill, 400, 400, format: 'jpeg', fallback: "/images/no_image.jpg") %></p>
 				<table class="table-space">
 					<tr>
 						<td>名前：</td>

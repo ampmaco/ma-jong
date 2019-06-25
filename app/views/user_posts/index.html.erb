@@ -56,7 +56,7 @@
 							<% user_post.post.user_posts.each do |join| %>
 								<tr>
 									<td>
-										<%= attachment_image_tag(join.user, :image, :fill, 20, 20, format: "jpeg", fallback: "no_image.jpg") %>
+										<%= attachment_image_tag(join.user, :image, :fill, 20, 20, format: "jpeg", fallback: "/images/no_image.jpg") %>
 									</td>
 									<td>
 										<%= link_to user_path(join.user.id) do %>
