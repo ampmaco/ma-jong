@@ -25,6 +25,14 @@
 					<section class="dn">
 						<h4>メンバー一覧</h4>
 						<table class="table-space">
+							<tr>
+								<td><%= attachment_image_tag(post.user, :image, :fill, 20, 20, format: "jpeg", fallback: "no_image.jpg") %></td>
+								<td>
+									<%= link_to user_path(post.user.id) do %>
+									<%= post.user.user_name %>
+									<% end %>
+								</td>
+							</tr>
 							<% post.user_posts.each do |join| %>
 								<tr>
 									<td>
@@ -53,6 +61,15 @@
 					<section class="dn">
 						<h4>メンバー一覧</h4>
 						<table class="table-space">
+							<tr>
+								<td><%= attachment_image_tag(user_post.post.user, :image, :fill, 20, 20, format: "jpeg", fallback: "no_image.jpg") %>
+								</td>
+								<td>
+									<%= link_to user_path(user_post.post.user.id) do %>
+									<%= user_post.post.user.user_name %>
+									<% end %>
+								</td>
+							</tr>
 							<% user_post.post.user_posts.each do |join| %>
 								<tr>
 									<td>

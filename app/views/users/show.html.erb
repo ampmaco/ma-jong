@@ -91,7 +91,8 @@
 <script>
 
 	$('#star-rating').raty({
-		path: '/assets/',
+		starOff:      '<%= asset_path('star-off.png') %>',
+		starOn:       '<%= asset_path('star-on.png') %>',
 		score: 3,
 		click: function(score, e) {
 			$("#rate").val(score)
@@ -99,31 +100,36 @@
 	});
 
 	$('.star-1').raty({
-		path: '/assets/',
+		starOff:      '<%= asset_path('star-off.png') %>',
+		starOn:       '<%= asset_path('star-on.png') %>',
 		readOnly: true,
 		score: 1
 	});
 
 	$('.star-2').raty({
-		path: '/assets/',
+		starOff:      '<%= asset_path('star-off.png') %>',
+		starOn:       '<%= asset_path('star-on.png') %>',
 		readOnly: true,
 		score: 2
 	});
 
 	$('.star-3').raty({
-		path: '/assets/',
+		starOff:      '<%= asset_path('star-off.png') %>',
+		starOn:       '<%= asset_path('star-on.png') %>',
 		readOnly: true,
 		score: 3
 	});
 
 	$('.star-4').raty({
-		path: '/assets/',
+		starOff:      '<%= asset_path('star-off.png') %>',
+		starOn:       '<%= asset_path('star-on.png') %>',
 		readOnly: true,
 		score: 4
 	});
 
 	$('.star-5').raty({
-		path: '/assets/',
+		starOff:      '<%= asset_path('star-off.png') %>',
+		starOn:       '<%= asset_path('star-on.png') %>',
 		readOnly: true,
 		score: 5
 	});

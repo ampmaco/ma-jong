@@ -10,6 +10,5 @@
     email:     'ampmaco@gmail.com',
     password:  'ampmaco',
     user_name: '管理者',
-    addres:    '東京都渋谷区神南１丁目１９−１１',
     admin:     'true',
     )
