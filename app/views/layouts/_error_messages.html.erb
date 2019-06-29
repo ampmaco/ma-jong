@@ -1,0 +1,11 @@
+<!-- エラー発生時にエラー件数と文表示 -->
+<% if model.errors.any? %>
+<div class="alert alert-danger">
+	<h3><%= model.errors.count %> 件のエラーが出ました。</h3>
+	<ul>
+		<% model.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>

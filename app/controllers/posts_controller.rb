@@ -20,8 +20,12 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(post_params)
   	@post.user_id = current_user.id
-  	@post.save
-  	redirect_to new_post_path
+  	if @post.save
+      redirect_to new_post_path
+    else
+      @posts = Post.all.order('updated_at DESC')
+      render 'new'
+    end
   end
 
   def edit
@@ -33,8 +37,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to new_post_path
+    if @post.update(post_params)
+      redirect_to new_post_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy

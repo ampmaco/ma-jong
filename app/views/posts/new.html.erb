@@ -16,12 +16,7 @@
 			<!-- 新規募集投稿フォーム -->
 			<%= form_for(@post) do |f| %>
 			<!-- エラー発生時にエラー件数と文表示 -->
-				<% if @post.errors.any? %>
-					<%= @post.errors.count %>件のエラーが発生しました
-					<% @post.errors.full_messages.each do |message| %>
-						<%= message %>
-					<% end %>
-				<% end %>
+				<%= render 'layouts/error_messages', model: f.object %>
 
 				<table class="table-space">
 					<tr>
