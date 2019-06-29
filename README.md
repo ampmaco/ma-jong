@@ -1,25 +1,32 @@
-# README
+# 麻雀メンバー募集WEBアプリ　「雀友」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このWEBアプリケーションは、麻雀を遊びたいけどフリー雀荘は敷居が高く、
+友人と遊ぼうにも、就職等の関係で離れてしてしまい、
+なかなか遊べない人が麻雀から離れて行くことを残念に思い、作成したものです。
 
-Things you may want to cover:
+## 利用方法
+### トップページ
+・コンセプトページへのリンク
+・募集一覧
+・検索機能
+の３つがあります。
 
-* Ruby version
+募集一覧は新しい投稿順に並びます。
+検索ボックスにて、募集一覧から都道府県と地域の絞り込み検索をして、良い募集を探してください。
 
-* System dependencies
+### コンセプト
+WEBサイトの使い方や製作者の想いが書いてあります。
 
-* Configuration
+### 会員登録・ログイン
+当サイトは会員登録制です。
+会員にご登録いただき、ログインしていただきますと、
+募集に対するグループに加入するボタンをクリックで、その募集グループに加入することができます。
+募集グループへの加入はマイページにて確認することができ、グループチャットページへの参加が可能です。
+チャットページにて日程調整等を行い、楽しい麻雀をしてください。
 
-* Database creation
+### お問い合わせ
+サイトに対するご要望をお送り戴くためのものです。
+お問い合わせいただいた内容に対しましては、誠意を以ってお応えいたします。
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# ma-jong
+### マイページ
+マイページの中には３つの機能があります。
